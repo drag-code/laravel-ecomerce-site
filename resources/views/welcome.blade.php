@@ -4,7 +4,7 @@
             <section class="mb-6">
                 <span
                     class="text-gray-700 font-semibold uppercase">{{$category->name}}</span>
-                <a href="" class="text-orange-500 font-bold">Ver más</a>
+                <a href="{{route('categories.show', $category)}}" class="text-orange-500 font-bold hover:text-orange-400 hover:underline">Ver más</a>
                 @livewire('category-products', ['category' => $category])
             </section>
         @endforeach

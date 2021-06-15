@@ -3,21 +3,7 @@
         <div class="glider-contain">
             <ul class="glider-{{$category->id}}">
                 @foreach ($products as $product)
-                    <li class="bg-white rounded-lg shadow {{$loop->last ? '': 'sm:mr-4'}} ">
-                        <article>
-                            <figure>
-                                <img class="object-cover object-center h-48 w-full" src="{{asset('storage/'.$product->image->first()->url)}}" alt="{{$product->name}}">
-                            </figure>
-                            <div class="py-4 px-6">
-                                <h1 class="text-lg font-semibold">
-                                    <a href="">
-                                        {{\Illuminate\Support\Str::limit($product->name, 20)}}
-                                    </a>
-                                </h1>
-                                <p class="text-trueGray-700 font-bold">${{$product->price}}</p>
-                            </div>
-                        </article>
-                    </li>
+                    <x-product-card :product="$product" :loop="$loop"/>
                 @endforeach
             </ul>
 

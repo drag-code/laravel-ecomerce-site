@@ -91,7 +91,7 @@
                             class="navigation-link text-trueGray-500 hover:bg-orange-500 hover:text-white">
                             <a
                                 class="flex py-2 px-4 text-sm items-center"
-                                href="">
+                                href="{{route('categories.show', $category)}}">
                                 <span class="flex justify-center w-9">{!! $category->icon !!}</span>
                                 {{$category->name}}
                             </a>
@@ -117,6 +117,7 @@
                     <li
                         class="text-trueGray-500 hover:bg-orange-500 hover:text-white">
                         <a
+                            href="{{route('categories.show', $category)}}"
                             class="flex py-2 px-4 text-sm items-center">
                             <span class="flex justify-center w-9">{!! $category->icon !!}</span>
                             {{$category->name}}
