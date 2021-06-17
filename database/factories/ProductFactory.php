@@ -29,10 +29,6 @@ class ProductFactory extends Factory
         $subcategory = Subcategory::all()->random();
         $category = $subcategory->category;
         $brand = $category->brands->random();
-        $quantity = null;
-        if (!$subcategory->color) {
-            $quantity = 15;
-        }
 
         return [
             'name' => $name,
@@ -41,7 +37,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->numberBetween(10, 2000),
             'subcategory_id' => $subcategory->id,
             'brand_id' => $brand->id,
-            'quantity' => $quantity,
+            'quantity' => $this->faker->numberBetween(5, 100),
             'status' => 2,
         ];
     }

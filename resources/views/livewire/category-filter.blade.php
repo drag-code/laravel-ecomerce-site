@@ -50,9 +50,9 @@
                                     <div class="flex justify-between">
                                         <div>
                                             <h1 class="text-lg font-semibold text-gray-700">
-                                                <a href="">
+                                                <p>
                                                     {{\Illuminate\Support\Str::limit($product->name, 20)}}
-                                                </a>
+                                                </p>
                                             </h1>
                                             <p class="text-gray-700 font-bold">${{$product->price}}</p>
                                         </div>
@@ -69,7 +69,7 @@
                                     </div>
                                     <div>
                                         <x-jet-danger-button>
-                                            Más información
+                                            <a href="{{route('products.show', $product)}}">Más información</a>
                                         </x-jet-danger-button>
                                     </div>
                                 </div>
