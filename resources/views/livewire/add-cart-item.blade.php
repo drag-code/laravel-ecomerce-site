@@ -8,7 +8,7 @@
         <div class="flex items-center gap-2">
             <x-jet-secondary-button
                 disabled
-                x-bind:disabled="$wire.qty <= 1"
+                x-bind:disabled="($wire.qty <= 1) || !$wire.stock"
                 wire:loading.attr="disabled"
                 wire.target="decrement"
                 wire:click="decrement">
@@ -17,7 +17,7 @@
             <span class="text-gray-700">{{$qty}}</span>
             <x-jet-secondary-button
                 disabled
-                x-bind:disabled="$wire.qty == $wire.stock"
+                x-bind:disabled="($wire.qty == $wire.stock) || !$wire.stock"
                 wire:loading.attr="disabled"
                 wire.target="increment"
                 wire:click="increment">
@@ -25,7 +25,14 @@
             </x-jet-secondary-button>
         </div>
         <div class="flex-1">
-            <x-button class="w-full" color="orange">
+            <x-button
+                wire:click="addItem"
+                wire:loading.attr="disabled"
+                wire.target="addItem"
+                disabled
+                x-bind:disabled="!$wire.stock"
+                class="w-full"
+                color="orange">
                 Agregar al carrito de compra
             </x-button>
         </div>

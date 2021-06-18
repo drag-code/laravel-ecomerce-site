@@ -19,6 +19,15 @@
         </select>
     </div>
 
+    <p class="text-gray-700 my-4">
+        <span class="font-semibold text-">Stock disponible: </span>
+        @if($stock)
+            {{$stock}}
+        @else
+            {{$product->stock}}
+        @endif
+    </p>
+
     <div class="flex items-center gap-3">
         <div class="flex items-center gap-2">
             <x-jet-secondary-button
@@ -42,6 +51,9 @@
         <div class="flex-1">
             <x-button
                 x-bind:disabled="!$wire.stock"
+                wire:click="addItem"
+                wire:loading.attr="disabled"
+                wire.target="addItem"
                 class="w-full" color="orange">
                 Agregar al carrito de compra
             </x-button>

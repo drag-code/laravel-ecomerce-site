@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +25,5 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('search', SearchController::class)->name('search');
