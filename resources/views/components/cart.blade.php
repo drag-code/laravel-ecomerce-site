@@ -1,4 +1,4 @@
-@props(['size' => 35, 'color' => 'gray', 'items'])
+@props(['size' => 35, 'color' => 'gray', 'items' => 0, 'cursor' => 'cursor-pointer'])
 @php
     switch($color) {
         case "gray":
@@ -12,7 +12,7 @@
     }
 @endphp
 
-<span class="relative inline-block cursor-pointer">
+<span class="relative inline-block {{$cursor}}">
     <svg
         class="text-gray-700 fill-current"
         xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -30,5 +30,7 @@
         </g>
     </g>
 </svg>
-    <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">{{$items}}</span>
+    @if ($items)
+        <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">{{$items}}</span>
+    @endif
 </span>

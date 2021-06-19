@@ -22,6 +22,7 @@ class AddCartItemColor extends Component
     public function updatedColorId() {
         $current_color = $this->product->colors->find($this->color_id);
         $this->options['color_id'] = $current_color->id;
+        $this->options['color_name'] = $current_color->name;
         $this->stock = getAvailableQuantity($this->product->id, $this->color_id);
     }
 

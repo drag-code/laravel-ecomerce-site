@@ -28,12 +28,14 @@ class AddCartItemSize extends Component
         $size = Size::find($this->size_id);
         $this->colors = $size->colors;
         $this->options['size_id'] = $size->id;
+        $this->options['size_name'] = $size->name;
     }
 
     public function updatedColorId() {
         $size = Size::find($this->size_id);
         $color = $size->colors->find($this->color_id);
         $this->options['color_id'] = $color->id;
+        $this->options['color_name'] = $color->name;
         $this->stock = getAvailableQuantity($this->product->id, $this->color_id, $this->size_id);
     }
 

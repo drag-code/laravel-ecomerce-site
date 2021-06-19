@@ -3,8 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\ShoppingCart;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +27,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('search', SearchController::class)->name('search');
+
+Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
+
+Route::get('test', function () {
+    \Gloudemans\Shoppingcart\Facades\Cart::destroy();
+});

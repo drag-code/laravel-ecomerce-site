@@ -23,6 +23,11 @@
                                 class="fas fa-star text-sm text-yellow-400"></i></p>
                         <a href="#" class="text-orange-500 underline hover:text-orange-600">39
                             reseñas</a>
+                        <div class="flex flex-1 justify-end">
+                            <x-button-link color="blue" href="{{route('home')}}">
+                                Regresar
+                            </x-button-link>
+                        </div>
                     </div>
                     <p class="text-trueGray-700 font-semibold text-2xl my-4">
                         ${{$product->price}}</p>
