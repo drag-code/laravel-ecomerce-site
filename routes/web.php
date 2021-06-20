@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\WebHookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\{ShoppingCart, CreateOrder};
 
@@ -34,4 +35,10 @@ Route::group(['prefix' => 'orders', 'middleware' => ['auth', 'check-cart']], fun
     Route::get('create', CreateOrder::class)->name('orders.create');
 });
 
+Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+
 Route::get('orders/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');
+
+Route::get('orders/{order}/pay', [OrderController::class, 'pay'])->name('orders.pay');
+
+Route::post('webhooks', WebHookController::class);
