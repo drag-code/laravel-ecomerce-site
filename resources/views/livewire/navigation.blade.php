@@ -12,7 +12,7 @@
             <span class="text-sm hidden md:block">Categorías</span>
         </a>
 
-        <a href="{{ route('dashboard') }}" class="mx-6">
+        <a href="{{ route('home') }}" class="mx-6">
             <x-jet-application-mark class="block h-9 w-auto"/>
         </a>
 
