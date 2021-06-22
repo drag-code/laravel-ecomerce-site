@@ -5,6 +5,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WebHookController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\{ShoppingCart, CreateOrder, PaymentOrder};
 
@@ -31,16 +32,16 @@ Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 
 Route::view('errors', 'errors.no-cart-items')->name('errors.no-cart-items');
 
-Route::group(['prefix' => 'orders', 'middleware' => ['auth', 'check-cart']], function() {
+Route::group(['prefix' => 'orders', 'middleware' => ['auth']], function() {
     Route::get('create', CreateOrder::class)->name('orders.create');
+
+    Route::get('{order}', [OrderController::class, 'show'])->name('orders.show');
+
+    Route::get('{order}/payment', PaymentOrder::class)->name('orders.payment');
+
+    /*Route::get('{order}/pay', [OrderController::class, 'pay'])->name('orders.pay');*/
+
+    Route::get('', [OrderController::class, 'index'])->name('orders.index');
 });
-
-Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
-
-Route::get('orders/{order}/payment', PaymentOrder::class)->name('orders.payment');
-
-/*Route::get('orders/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');*/
-
-Route::get('orders/{order}/pay', [OrderController::class, 'pay'])->name('orders.pay');
 
 Route::post('webhooks', WebHookController::class);

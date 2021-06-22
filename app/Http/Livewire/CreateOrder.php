@@ -80,6 +80,10 @@ class CreateOrder extends Component
         $order->total = $this->shipping_cost + Cart::subtotalFloat();
         $order->content = Cart::content();
         $order->save();
+        foreach(Cart::content() as $item) {
+            decrementStock($item);
+        }
+        Cart::destroy();
         return redirect()->route('orders.payment', $order);
     }
 }

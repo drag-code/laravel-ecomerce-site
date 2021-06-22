@@ -12,14 +12,10 @@ class Product extends Model
 
     const DRAFT = 1;
     const PUBLISHED = 2;
-    protected $fillable = [
-        'subcategory_id',
-        'brand_id',
-        'name',
-        'description',
-        'slug',
-        'price',
-        'quantity',
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at'
     ];
 
     // Accessors

@@ -33,3 +33,31 @@ function getAddedQuantity($product_id, $color_id=null, $size_id=null) {
 function getAvailableQuantity($product_id, $color_id=null, $size_id=null) {
     return quantity($product_id, $color_id, $size_id) - getAddedQuantity($product_id, $color_id, $size_id);
 }
+
+function decrementStock($item) {
+    $product = Product::find($item->id);
+    $quantity = getAvailableQuantity($item->id, $item->options->color_id, $item->options->size_id);
+    if ($item->options->size_id) {
+        $size = Size::find($item->options->size_id);
+        $size->colors()->updateExistingPivot($item->options->color_id, ['quantity' => $quantity]);
+    } elseif($item->options->color_id) {
+        $product->colors()->updateExistingPivot($item->options->color_id, ['quantity' => $quantity]);
+    } else {
+        $product->quantity = $quantity;
+        $product->save();
+    }
+}
+
+function recoverStock($item) {
+    $product = Product::find($item->id);
+    $quantity = quantity($item->id, $item->options->color_id, $item->options->size_id) + $item->qty;
+    if ($item->options->size_id) {
+        $size = Size::find($item->options->size_id);
+        $size->colors()->updateExistingPivot($item->options->color_id, ['quantity' => $quantity]);
+    } elseif($item->options->color_id) {
+        $product->colors()->updateExistingPivot($item->options->color_id, ['quantity' => $quantity]);
+    } else {
+        $product->quantity = $quantity;
+        $product->save();
+    }
+}

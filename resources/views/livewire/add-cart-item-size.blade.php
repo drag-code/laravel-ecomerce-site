@@ -20,11 +20,8 @@
     </div>
 
     <p class="text-gray-700 my-4">
-        <span class="font-semibold text-">Stock disponible: </span>
         @if($stock)
-            {{$stock}}
-        @else
-            {{$product->stock}}
+            <span class="font-semibold text-">Stock disponible: </span> {{$stock}}
         @endif
     </p>
 

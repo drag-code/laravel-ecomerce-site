@@ -29,6 +29,7 @@ class AddCartItemSize extends Component
         $this->colors = $size->colors;
         $this->options['size_id'] = $size->id;
         $this->options['size_name'] = $size->name;
+        $this->reset(['color_id', 'stock']);
     }
 
     public function updatedColorId() {
