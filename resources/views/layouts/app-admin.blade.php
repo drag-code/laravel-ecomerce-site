@@ -17,12 +17,21 @@
         <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
         @livewireStyles
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css" integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         {{--CKEDITOR--}}
         <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
                 integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous">
+        </script>
+
+        {{-- SWEET ALERT 2 --}}
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        {{-- DROPZONE --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js" integrity="sha512-VQQXLthlZQO00P+uEu4mJ4G4OAgqTtKG1hri56kQY1DtdLeIqhKUp9W/lllDDu3uN3SnUNawpW7lBda8+dSi7w==" crossorigin="anonymous" referrerpolicy="no-referrer">
         </script>
     </head>
     <body class="font-sans antialiased">
