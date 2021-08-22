@@ -5,6 +5,7 @@
             {{ session('message') }}
         </div>
     @endif
+    
     <div class="container py-4">
         @foreach($categories as $category)
             <section class="mb-6">

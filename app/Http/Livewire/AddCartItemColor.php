@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\Traits\CartTrait;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class AddCartItemColor extends Component
@@ -19,16 +20,18 @@ class AddCartItemColor extends Component
         'size_id' => null
     ];
 
-    public function updatedColorId() {
+    public function updatedColorId()
+    {
         $current_color = $this->product->colors->find($this->color_id);
         $this->options['color_id'] = $current_color->id;
         $this->options['color_name'] = $current_color->name;
         $this->stock = getAvailableQuantity($this->product->id, $this->color_id);
     }
 
-    public function mount() {
+    public function mount()
+    {
         $this->colors = $this->product->colors()->select(['colors.id', 'name'])->get();
-        $this->options['image'] = asset('storage/'.$this->product->image->first()->url);
+        $this->options['image'] = Storage::url($this->product->image->first()->url);
     }
 
     public function render()

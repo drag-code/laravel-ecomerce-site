@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\Traits\CartTrait;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class AddCartItem extends Component
@@ -20,9 +21,10 @@ class AddCartItem extends Component
     ];
 
 
-    public function mount() {
+    public function mount()
+    {
         $this->stock = getAvailableQuantity($this->product->id);
-        $this->options['image'] = asset('storage/'.$this->product->image->first()->url);
+        $this->options['image'] = Storage::url($this->product->image->first()->url);
     }
 
     public function render()

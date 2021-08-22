@@ -73,8 +73,8 @@ class Create extends Component
         if (!$this->subcategory->color && !$this->subcategory->size) {
             $product += $this->validate(['quantity' => ['required', 'numeric', 'min:1']]);
         }
-        Product::create($product);
+        $product = Product::create($product);
         session()->flash('message', 'Producto registrado exitosamente');
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.products.edit', $product);
     }
 }

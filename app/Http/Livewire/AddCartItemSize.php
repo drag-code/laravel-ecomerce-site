@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Http\Traits\CartTrait;
 use App\Models\Size;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class AddCartItemSize extends Component
@@ -19,12 +20,14 @@ class AddCartItemSize extends Component
     public $options = [];
 
 
-    public function mount() {
+    public function mount()
+    {
         $this->sizes = $this->product->sizes;
-        $this->options['image'] = asset('storage/'.$this->product->image->first()->url);
+        $this->options['image'] = Storage::url($this->product->image->first()->url);
     }
 
-    public function updatedSizeId() {
+    public function updatedSizeId()
+    {
         $size = Size::find($this->size_id);
         $this->colors = $size->colors;
         $this->options['size_id'] = $size->id;
@@ -32,7 +35,8 @@ class AddCartItemSize extends Component
         $this->reset(['color_id', 'stock']);
     }
 
-    public function updatedColorId() {
+    public function updatedColorId()
+    {
         $size = Size::find($this->size_id);
         $color = $size->colors->find($this->color_id);
         $this->options['color_id'] = $color->id;
