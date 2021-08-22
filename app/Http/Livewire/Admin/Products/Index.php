@@ -11,11 +11,11 @@ class Index extends Component
 
     use WithPagination;
 
-    public $search;
+    public $search = "";
 
     public function render()
     {
-        $products = Product::where('name', 'LIKE', "%$this->search%")->orderBy('id', 'DESC')->paginate(5);
+        $products = Product::where('name', 'LIKE', "%".$this->search."%")->orderBy('id', 'DESC')->paginate(5);
         return view('livewire.admin.products.index', compact('products'))->layout('layouts.app-admin');
     }
 
