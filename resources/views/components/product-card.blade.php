@@ -10,7 +10,7 @@ if ($loop) {
 <li class="bg-white rounded-lg shadow {{ $display_extra_margin }} ">
     <article>
         <figure>
-            <img class="object-cover object-center h-48 w-full" src="{{ Storage::url($product->image->first()->url) }}"
+            <img class="object-cover object-center h-48 w-full" src="{{ asset('storage/'.$product->image->first()->url) }}"
                 alt="{{ $product->name }}">
         </figure>
         <div class="py-4 px-6">
